@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kalkulator Nilai Set Interaktif</title>
+  <title>Kalkulator Gimnastik Juri E</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons -->
@@ -13,35 +13,35 @@
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
     }
-    /* Touch target dynamic animation */
+    /* Animasi pergerakan butang */
     .btn-active:active {
       transform: scale(0.95);
     }
   </style>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-indigo-500 selection:text-white">
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col justify-between selection:bg-rose-500 selection:text-white">
 
   <!-- Container Utama -->
   <div class="w-full max-w-lg mx-auto px-4 py-6 flex-1 flex flex-col justify-between">
     
     <!-- Tajuk Utama -->
     <header class="text-center mb-4">
-      <div class="inline-flex items-center gap-2 bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase mb-2 border border-indigo-500/20">
-        <i data-lucide="calculator" class="w-3.5 h-3.5"></i>
-        <span>Pengira Nilai Akumulatif</span>
+      <div class="inline-flex items-center gap-2 bg-rose-500/10 text-rose-400 px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase mb-2 border border-rose-500/20">
+        <i data-lucide="award" class="w-3.5 h-3.5"></i>
+        <span>Gimnastik &bull; Panel Juri E (Execution)</span>
       </div>
-      <h1 class="text-xl font-bold text-white tracking-tight">Kalkulator Nilai Set</h1>
+      <h1 class="text-xl font-bold text-white tracking-tight">Kalkulator Potongan Juri E</h1>
     </header>
 
-    <!-- PAPARAN UTAMA (JUMLAH AKHIR) -->
-    <section class="mb-6">
-      <div class="relative overflow-hidden bg-gradient-to-br from-indigo-600 via-indigo-700 to-purple-800 rounded-3xl p-6 shadow-2xl shadow-indigo-950/50 border border-indigo-400/20 text-center">
+    <!-- PAPARAN UTAMA (JUMLAH POTONGAN AKHIR) -->
+    <section class="mb-5">
+      <div class="relative overflow-hidden bg-gradient-to-br from-rose-700 via-rose-800 to-slate-900 rounded-3xl p-6 shadow-2xl shadow-rose-950/40 border border-rose-500/30 text-center">
         <!-- Hiasan latar belakang -->
-        <div class="absolute -right-8 -top-8 w-32 h-32 bg-white/10 rounded-full blur-2xl pointer-events-none"></div>
-        <div class="absolute -left-8 -bottom-8 w-32 h-32 bg-purple-500/20 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="absolute -right-8 -top-8 w-32 h-32 bg-rose-500/10 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="absolute -left-8 -bottom-8 w-32 h-32 bg-amber-500/10 rounded-full blur-2xl pointer-events-none"></div>
 
-        <span class="block text-indigo-200 text-xs font-bold uppercase tracking-widest mb-1">
-          Jumlah Akhir / Semasa
+        <span class="block text-rose-200 text-xs font-bold uppercase tracking-widest mb-1">
+          JUMLAH POTONGAN AKHIR (PENALTI E)
         </span>
 
         <!-- Paparan Angka Utama -->
@@ -51,154 +51,179 @@
           </span>
         </div>
 
-        <!-- Kad Stats Ringkas (Bilangan Set) -->
-        <div class="mt-4 pt-4 border-t border-white/10 flex justify-center items-center gap-2 text-indigo-100">
-          <i data-lucide="layers" class="w-4 h-4 text-indigo-300"></i>
-          <span class="text-sm font-medium">Bilangan Set:</span>
-          <span id="display-count" class="bg-white/20 px-3 py-0.5 rounded-full text-sm font-bold text-white min-w-[32px]">
-            0
-          </span>
+        <!-- Ringkasan Nilai E Score (Berdasarkan Skor Asas 10.0) -->
+        <div class="grid grid-cols-2 gap-2 mt-4 pt-4 border-t border-white/10 text-xs">
+          <div class="bg-black/30 backdrop-blur-sm rounded-xl py-2 px-3 border border-white/5">
+            <span class="block text-slate-400 text-[10px] font-semibold uppercase">Jumlah Set Kesalahan</span>
+            <span id="display-count" class="text-base font-bold text-white">0</span>
+          </div>
+          <div class="bg-black/30 backdrop-blur-sm rounded-xl py-2 px-3 border border-white/5">
+            <span class="block text-rose-300 text-[10px] font-semibold uppercase">Baki Skor E (Asas 10.0)</span>
+            <span id="display-e-score" class="text-base font-bold text-emerald-400">10.0</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- BUTANG PILIHAN NILAI (0.1, 0.3, 0.5, 1.0) -->
-    <section class="mb-6">
-      <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 px-1">Tambah Nilai Set</h2>
+    <!-- BUTANG PILIHAN POTONGAN (0.1, 0.3, 0.5, 1.0) -->
+    <section class="mb-5">
+      <div class="flex items-center justify-between mb-2.5 px-1">
+        <h2 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Pilih Potongan Kesalahan</h2>
+        <span class="text-[11px] text-slate-500">Tekan untuk tambah penalti</span>
+      </div>
+
       <div class="grid grid-cols-2 gap-3 sm:gap-4">
         
-        <!-- Butang 0.1 -->
-        <button onclick="addValue(0.1)" class="btn-active group relative bg-slate-800 hover:bg-slate-750 active:bg-indigo-600 border border-slate-700/80 hover:border-indigo-500/50 rounded-2xl p-5 flex flex-col items-center justify-center shadow-lg transition-all duration-150">
-          <span class="text-xs text-indigo-400 group-hover:text-indigo-300 font-semibold mb-1">+ Tambah</span>
-          <span class="text-3xl font-extrabold text-white">0.1</span>
+        <!-- Butang Potongan 0.1 (Kecil) -->
+        <button onclick="addDeduction(0.1)" class="btn-active group relative bg-slate-800 hover:bg-slate-750 active:bg-rose-600 border border-slate-700/80 hover:border-rose-500/50 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center shadow-lg transition-all duration-150">
+          <span class="text-[11px] text-rose-400 group-hover:text-rose-300 font-medium mb-0.5">Kesalahan Kecil</span>
+          <span class="text-3xl sm:text-4xl font-extrabold text-white">0.1</span>
         </button>
 
-        <!-- Butang 0.3 -->
-        <button onclick="addValue(0.3)" class="btn-active group relative bg-slate-800 hover:bg-slate-750 active:bg-indigo-600 border border-slate-700/80 hover:border-indigo-500/50 rounded-2xl p-5 flex flex-col items-center justify-center shadow-lg transition-all duration-150">
-          <span class="text-xs text-indigo-400 group-hover:text-indigo-300 font-semibold mb-1">+ Tambah</span>
-          <span class="text-3xl font-extrabold text-white">0.3</span>
+        <!-- Butang Potongan 0.3 (Sederhana) -->
+        <button onclick="addDeduction(0.3)" class="btn-active group relative bg-slate-800 hover:bg-slate-750 active:bg-rose-600 border border-slate-700/80 hover:border-rose-500/50 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center shadow-lg transition-all duration-150">
+          <span class="text-[11px] text-rose-400 group-hover:text-rose-300 font-medium mb-0.5">Kesalahan Sederhana</span>
+          <span class="text-3xl sm:text-4xl font-extrabold text-white">0.3</span>
         </button>
 
-        <!-- Butang 0.5 -->
-        <button onclick="addValue(0.5)" class="btn-active group relative bg-slate-800 hover:bg-slate-750 active:bg-indigo-600 border border-slate-700/80 hover:border-indigo-500/50 rounded-2xl p-5 flex flex-col items-center justify-center shadow-lg transition-all duration-150">
-          <span class="text-xs text-indigo-400 group-hover:text-indigo-300 font-semibold mb-1">+ Tambah</span>
-          <span class="text-3xl font-extrabold text-white">0.5</span>
+        <!-- Butang Potongan 0.5 (Besar) -->
+        <button onclick="addDeduction(0.5)" class="btn-active group relative bg-slate-800 hover:bg-slate-750 active:bg-rose-600 border border-slate-700/80 hover:border-rose-500/50 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center shadow-lg transition-all duration-150">
+          <span class="text-[11px] text-rose-400 group-hover:text-rose-300 font-medium mb-0.5">Kesalahan Besar</span>
+          <span class="text-3xl sm:text-4xl font-extrabold text-white">0.5</span>
         </button>
 
-        <!-- Butang 1.0 -->
-        <button onclick="addValue(1.0)" class="btn-active group relative bg-slate-800 hover:bg-slate-750 active:bg-indigo-600 border border-slate-700/80 hover:border-indigo-500/50 rounded-2xl p-5 flex flex-col items-center justify-center shadow-lg transition-all duration-150">
-          <span class="text-xs text-indigo-400 group-hover:text-indigo-300 font-semibold mb-1">+ Tambah</span>
-          <span class="text-3xl font-extrabold text-white">1.0</span>
+        <!-- Butang Potongan 1.0 (Jatuh / Major) -->
+        <button onclick="addDeduction(1.0)" class="btn-active group relative bg-slate-800 hover:bg-slate-750 active:bg-rose-600 border border-slate-700/80 hover:border-rose-500/50 rounded-2xl p-4 sm:p-5 flex flex-col items-center justify-center shadow-lg transition-all duration-150">
+          <span class="text-[11px] text-rose-400 group-hover:text-rose-300 font-medium mb-0.5">Jatuh / Major</span>
+          <span class="text-3xl sm:text-4xl font-extrabold text-white">1.0</span>
         </button>
 
       </div>
     </section>
 
     <!-- BUTANG KAWALAN (UNDO & RESET) -->
-    <section class="grid grid-cols-2 gap-3 mb-6">
+    <section class="grid grid-cols-2 gap-3 mb-5">
       
       <!-- Butang Undo -->
-      <button id="btn-undo" onclick="undoLast()" disabled class="btn-active flex items-center justify-center gap-2 bg-slate-800/80 hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed border border-slate-700 text-amber-400 disabled:text-slate-500 font-semibold py-3.5 px-4 rounded-xl shadow-md transition-all">
+      <button id="btn-undo" onclick="undoLast()" disabled class="btn-active flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed border border-slate-700 text-amber-400 disabled:text-slate-500 font-semibold py-3.5 px-4 rounded-xl shadow-md transition-all">
         <i data-lucide="undo-2" class="w-4 h-4"></i>
-        <span>UNDO</span>
+        <span>BATAL (UNDO)</span>
       </button>
 
       <!-- Butang Reset -->
-      <button id="btn-reset" onclick="resetAll()" disabled class="btn-active flex items-center justify-center gap-2 bg-slate-800/80 hover:bg-rose-950/40 hover:border-rose-800/60 disabled:opacity-40 disabled:cursor-not-allowed border border-slate-700 text-rose-400 disabled:text-slate-500 font-semibold py-3.5 px-4 rounded-xl shadow-md transition-all">
+      <button id="btn-reset" onclick="resetAll()" disabled class="btn-active flex items-center justify-center gap-2 bg-slate-800 hover:bg-rose-950/40 hover:border-rose-800/60 disabled:opacity-40 disabled:cursor-not-allowed border border-slate-700 text-rose-400 disabled:text-slate-500 font-semibold py-3.5 px-4 rounded-xl shadow-md transition-all">
         <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
-        <span>RESET</span>
+        <span>RESET SEMUA</span>
       </button>
 
     </section>
 
-    <!-- REKOD SEJARAH SET -->
-    <section class="bg-slate-800/40 border border-slate-800 rounded-2xl p-4 flex-1 flex flex-col min-h-[160px] max-h-[220px]">
+    <!-- REKOD SEJARAH SET POTONGAN -->
+    <section class="bg-slate-800/40 border border-slate-800 rounded-2xl p-4 flex-1 flex flex-col min-h-[150px] max-h-[200px]">
       <div class="flex items-center justify-between mb-2 pb-2 border-b border-slate-700/50">
         <span class="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
-          <i data-lucide="history" class="w-3.5 h-3.5 text-indigo-400"></i>
-          Rekod Set Masukan
+          <i data-lucide="clipboard-list" class="w-3.5 h-3.5 text-rose-400"></i>
+          Rekod Set Potongan Juri
         </span>
         <span id="history-badge" class="text-[10px] bg-slate-700 text-slate-300 px-2 py-0.5 rounded-full font-medium">
-          Kosong
+          Tiada Potongan
         </span>
       </div>
 
       <!-- Senarai Rekod Scrollable -->
       <div id="history-list" class="flex-1 overflow-y-auto pr-1 space-y-1.5 text-sm">
-        <!-- Item akan dimasukkan melalui JavaScript -->
+        <!-- Rekod potongan akan dipaparkan di sini -->
       </div>
     </section>
 
     <!-- Footer -->
     <footer class="text-center text-xs text-slate-500 mt-4">
-      Kalkulator Interaktif &bull; Rekod Nilai Automatik
+      Sistem Pengiraan Potongan Execution Juri E &bull; Gimnastik
     </footer>
 
   </div>
 
-  <!-- SKRIP LOGIK KALKULATOR -->
+  <!-- SKRIP LOGIK KALKULATOR GIMNASTIK -->
   <script>
     // State aplikasi
     let setRecords = [];
 
+    // Fungsi mendapatkan label jenis kesalahan gimnastik berdasarkan nilai
+    function getDeductionLabel(val) {
+      if (val === 0.1) return 'Kecil';
+      if (val === 0.3) return 'Sederhana';
+      if (val === 0.5) return 'Besar';
+      if (val === 1.0) return 'Jatuh / Major';
+      return 'Potongan';
+    }
+
     // Mengemaskini UI apabila nilai berubah
     function updateUI() {
-      // 1. Kira jumlah keseluruhan (guna Math.round untuk elak isu ketepatan floating point JS)
+      // 1. Kira jumlah potongan (guna Math.round untuk elak isu ketepatan floating point JS)
       const rawTotal = setRecords.reduce((acc, curr) => acc + curr, 0);
-      const totalFormatted = (Math.round(rawTotal * 10) / 10).toFixed(1);
+      const totalDeduction = (Math.round(rawTotal * 10) / 10).toFixed(1);
 
-      // 2. Kemaskini paparan Jumlah Akhir dan Bilangan Set
-      document.getElementById('display-total').textContent = totalFormatted;
+      // 2. Kira Baki Skor E (Asas 10.0 - Potongan)
+      const rawEScore = Math.max(0, 10.0 - rawTotal);
+      const eScoreFormatted = (Math.round(rawEScore * 10) / 10).toFixed(1);
+
+      // 3. Kemaskini paparan Jumlah Potongan Akhir dan Baki Skor E
+      document.getElementById('display-total').textContent = totalDeduction;
       document.getElementById('display-count').textContent = setRecords.length;
+      document.getElementById('display-e-score').textContent = eScoreFormatted;
 
-      // 3. Kemaskini butang kawalan (Undo & Reset)
+      // 4. Kemaskini butang kawalan (Undo & Reset)
       const isHistoryEmpty = setRecords.length === 0;
       document.getElementById('btn-undo').disabled = isHistoryEmpty;
       document.getElementById('btn-reset').disabled = isHistoryEmpty;
 
-      // 4. Kemaskini lencana rekod
+      // 5. Kemaskini lencana rekod
       const badge = document.getElementById('history-badge');
-      badge.textContent = isHistoryEmpty ? 'Kosong' : `${setRecords.length} rekod`;
+      badge.textContent = isHistoryEmpty ? 'Tiada Potongan' : `${setRecords.length} Set Potongan`;
 
-      // 5. Kemaskini senarai rekod set
+      // 6. Kemaskini senarai rekod set potongan
       const historyListEl = document.getElementById('history-list');
 
       if (isHistoryEmpty) {
         historyListEl.innerHTML = `
           <div class="h-full flex flex-col items-center justify-center text-slate-500 text-xs py-6">
-            <p>Belum ada masukan set.</p>
-            <p class="text-[11px] text-slate-600">Tekan butang di atas untuk mula mengira.</p>
+            <p>Tiada rekod kesalahan dimasukkan.</p>
+            <p class="text-[11px] text-slate-600">Tekan butang potongan di atas semasa rutin dipersembahkan.</p>
           </div>
         `;
       } else {
-        // Papar senarai rekod
+        // Papar senarai rekod potongan (Masukan terkini di atas)
         historyListEl.innerHTML = setRecords.map((val, index) => {
           const setNum = index + 1;
           const valFormatted = val.toFixed(1);
+          const label = getDeductionLabel(val);
           return `
             <div class="flex items-center justify-between bg-slate-800/80 border border-slate-700/60 rounded-lg px-3 py-2 text-xs transition-all hover:bg-slate-750">
-              <span class="font-medium text-slate-300">Set ${setNum}</span>
-              <span class="font-bold text-indigo-300 bg-indigo-950/60 border border-indigo-500/20 px-2.5 py-0.5 rounded-md">
-                +${valFormatted}
+              <div class="flex items-center gap-2">
+                <span class="font-bold text-slate-400">Set ${setNum}</span>
+                <span class="text-slate-400 text-[11px]">(${label})</span>
+              </div>
+              <span class="font-bold text-rose-300 bg-rose-950/60 border border-rose-500/20 px-2.5 py-0.5 rounded-md">
+                -${valFormatted}
               </span>
             </div>
           `;
-        }).reverse().join(''); // Papar masukan terkini di atas
+        }).reverse().join('');
       }
 
-      // Re-initialize lucide icons jika ada icon baru
+      // Re-initialize ikon Lucide
       if (window.lucide) {
         lucide.createIcons();
       }
     }
 
-    // Fungsi Tambah Nilai
-    function addValue(val) {
+    // Fungsi Tambah Potongan
+    function addDeduction(val) {
       setRecords.push(val);
       updateUI();
     }
 
-    // Fungsi Undo (Batal masukan terakhir)
+    // Fungsi Undo (Batal masukan potongan terakhir)
     function undoLast() {
       if (setRecords.length > 0) {
         setRecords.pop();
@@ -206,7 +231,7 @@
       }
     }
 
-    // Fungsi Reset (Kosongkan semua)
+    // Fungsi Reset (Kosongkan semua potongan)
     function resetAll() {
       if (setRecords.length > 0) {
         setRecords = [];
@@ -214,7 +239,7 @@
       }
     }
 
-    // Inisialisasi awal
+    // Inisialisasi awal apabila halaman dimuatkan
     document.addEventListener('DOMContentLoaded', () => {
       lucide.createIcons();
       updateUI();
